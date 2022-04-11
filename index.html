@@ -43,7 +43,7 @@
 
     function preload ()
     {
-        this.load.image('sky', 'assets/sky.png');
+       
         this.load.image('ground', 'assets/platform.png');
         this.load.image('star', 'assets/star.png');
         this.load.image('bomb', 'assets/bomb.png');
@@ -52,7 +52,7 @@
 
     function create ()
     {
-        this.add.image(400, 300, 'sky');
+     
 
         platforms = this.physics.add.staticGroup();
 
@@ -64,7 +64,6 @@
 
         player = this.physics.add.sprite(100, 450, 'dude');
 
-        player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -130,10 +129,29 @@
             player.anims.play('turn');
         }
 
-        if (cursors.up.isDown && player.body.touching.down)
+        if (cursors.up.isDown )
         {
-            player.setVelocityY(-330);
+            player.setVelocityY(-160);
         }
+        else
+        {
+            player.setVelocityY(0);
+
+        }
+        if (cursors.down.isDown )
+        {
+            player.setVelocityY(160);
+        }
+        else
+        {
+            player.setVelocityY(0);
+
+        }
+        if (cursors.up.isDown )
+        {
+            player.setVelocityY(-160);
+        }
+        
     }
 
     function collectStar (player, star)
